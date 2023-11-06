@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Project 11</title>
+		<link rel="icon" type="image/gif" href="/images/rb.gif">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="javashet/css/main.css" />
+		<noscript><link rel="stylesheet" href="javashet/css/main.css/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		
+			<header id="header">
+				<a href="index.html" class="title">RB | Projects</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="page2.html" class="active">Project 11</a></li>
+                        <li><a href="page1.html" >PREV</a></li>
+                        <li><a href="page3.html">NEXT</a></li>
+						
+						
+					</ul>
+				</nav>
+			</header>
+
+	
+			<div id="wrapper">
+
+			
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Project 11</h1>
+							<span class="image fit"><img src="images/P11.png" alt="" /></span>
+							
+							<p>program YOURNAME_P11 <br>
+                                dim x as byte<br>
+                                sub function mask (dim num as byte) as byte <br>
+                                select case num <br>
+                                case 0 result = $c0 <br>
+                                case 1 result = $F9 <br>
+                                case 2 result = $a4 <br>
+                                case 3 result = $b0 <br>
+                                case 4 result = $99 <br>
+                                case 5 result = $92 <br>
+                                case 6 result = $82 <br>
+                                case 7 result = $f8 <br>
+                                case 8 result = $80 <br>
+                                case 9 result = $90 <br>
+                                end select <br>
+                                end sub <br>
+                                main: <br>
+                                trisa=11111 <br>
+                                trisb=0 <br>
+                                porta=0 <br>
+                                portb=mask(0) <br>
+                                x=0 <br>
+                                main1: <br>
+                                if porta.0=1 then <br>
+                                x=x+1 <br>
+                                portb=mask(x) <br>
+                                delay_ms(5000) <br>
+                                if x>9 then x=9 <br>
+                                end if <br>
+                                end if <br>
+                                goto main1 <br>
+                                end. <br></p>
+							</div>
+					</section>
+
+			</div>
+
+	
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="https://replit.com/@BENITEZROBYNCS3" target="_blank">Raw||Bean</a></li>
+					</ul>
+				</div>
+			</footer>
+
+	
+			<script src="javashet/css/main.css/js/jquery.min.js"></script>
+			<script src="javashet/css/main.css/js/jquery.scrollex.min.js"></script>
+			<script src="javashet/css/main.css/js/jquery.scrolly.min.js"></script>
+			<script src="javashet/css/main.css/js/browser.min.js"></script>
+			<script src="javashet/css/main.css/js/breakpoints.min.js"></script>
+			<script src="javashet/css/main.css/js/util.js"></script>
+			<script src="javashet/css/main.css/js/main.js"></script>
+
+	</body>
+</html>
