@@ -3355,7 +3355,9 @@ body, input, select, textarea {
 				margin: 3em 0 0 0;
 				padding: 3em 0 0 0;
 			}
-
+	.image{
+			filter: blur(0px);
+		}
 		}
 
 
