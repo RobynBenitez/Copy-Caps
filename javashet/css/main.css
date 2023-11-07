@@ -396,8 +396,32 @@ input, select, textarea {
 	@media screen and (max-width: 450px) {
 /* byn */
 body, input, select, textarea {
-	font-size: 9pt;
+	font-size: 8pt;
 }
+.skill li em { 
+	/* position:relative;  */
+	font-style: normal;
+	font-size: 9px;
+	/* text-align: center; */
+	color:#dedede;
+	/* top:-50px; */
+  }
+  .titulo{ 
+
+	
+	font-size: 9px;
+	
+  }
+  .col {
+	width: 23%;
+	margin: 0 4%;
+	position: relative;
+	float: left;
+	font-size: 12px;
+	line-height: 2em;
+	padding: 5% 0;
+  } 
+
 	}
 	/* --------------------------------------------------------------------------- */
 	@media screen and (max-width: 700px) {
