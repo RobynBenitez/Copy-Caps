@@ -394,6 +394,12 @@ input, select, textarea {
 		}
 	} */
 	@media screen and (max-width: 450px) {
+		.pp{
+			float:right;
+			width:200px;
+			height:20px;
+		
+		}
 /* byn */
 body, input, select, textarea {
 	font-size: 8pt;
@@ -421,6 +427,8 @@ body, input, select, textarea {
 	line-height: 2em;
 	padding: 5% 0;
   } 
+
+
 
 	}
 	/* --------------------------------------------------------------------------- */
@@ -480,7 +488,7 @@ body, input, select, textarea {
 		}
 /* 360 */
 		@media screen and (max-width: 430px) {
-
+			
 			body, input, select, textarea {
 				font-size: 8pt;
 			}
@@ -574,9 +582,15 @@ body, input, select, textarea {
 	h6 {
 		font-size: 0.6em;
 	}
-
+/* byn */
 	@media screen and (max-width: 736px) {
+		.pp{
 
+			float:right;
+			width:300px;
+			height:300px;
+		
+		}
 		h1 {
 			font-size: 2em;
 		}
@@ -1890,9 +1904,14 @@ body, input, select, textarea {
 						}
 
 		}
-
+/* byn */
 		@media screen and (max-width: 480px) {
-
+			.pp{
+				float:right;
+				width:200px;
+				height:200px;
+			
+			}
 			.row {
 				display: flex;
 				flex-wrap: wrap;
@@ -2571,7 +2590,7 @@ body, input, select, textarea {
 		}
 
 		@media screen and (max-width: 736px) {
-
+			
 			.features section {
 				padding: 2.5em 1.5em 0.1em 5.5em ;
 			}
