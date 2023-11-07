@@ -380,7 +380,7 @@ input, select, textarea {
 		-ms-overflow-style: scrollbar;
 	}
 
-	@media screen and (max-width: 480px) {
+	/* @media screen and (max-width: 480px) {
 
 		html, body {
 			min-width: 320px;
@@ -392,8 +392,13 @@ input, select, textarea {
 			max-width: 100%;
 			width: 75em;
 		}
+	} */
+	@media screen and (max-width: 450px) {
+byn
+body, input, select, textarea {
+	font-size: 8pt;
+}
 	}
-
 	/* --------------------------------------------------------------------------- */
 	@media screen and (max-width: 700px) {
          
@@ -449,8 +454,8 @@ input, select, textarea {
 			}
 
 		}
-
-		@media screen and (max-width: 360px) {
+/* 360 */
+		@media screen and (max-width: 430px) {
 
 			body, input, select, textarea {
 				font-size: 8pt;
