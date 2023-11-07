@@ -394,7 +394,7 @@ input, select, textarea {
 		}
 	} */
 	@media screen and (max-width: 450px) {
-byn
+/* byn */
 body, input, select, textarea {
 	font-size: 9pt;
 }
