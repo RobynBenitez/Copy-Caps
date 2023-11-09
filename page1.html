@@ -32,34 +32,153 @@
 			
 					<section id="main" class="wrapper">
 						<div class="inner">
-							<h1 class="major">Project 10</h1>
+							<h1 class="major">QUIZ2</h1>
 							<span class="image fit"><img src="images/P10.png" class="img" alt="" /></span>
 							<p>program YOURNAME_P10<br>
-							dim x as byte<br>	
-							sub function mask (dim num as byte) as byte<br>
-							select case num<br>	
-							case 0 result = $c0<br>	
-							case 1 result = $F9<br>
-							case 2 result = $a4<br>	
-							case 3 result = $b0<br>	
-							case 4 result = $99<br>	
-							case 5 result = $92<br>	
-							case 6 result = $82<br>	
-							case 7 result = $f8<br>	
-							case 8 result = $80<br>	
-							case 9 result = $90<br>	
-							end select<br>	
-							end sub<br>	
-							main:<br>	
-							trisb=0<br>	
-							x=0<br>	
-							do<br>	
-							portb=mask(x)<br>	
-							delay_ms(3000)<br>	
-							x=x+1<br>	
-							loop until x=10<br>	
-							goto main<br>	
-							end.<br>
+							dim x as byte
+
+sub function mask (dim num as byte) as byte<br>
+    select case num<br>
+        case 0 result = $c0<br>
+        case 1 result = $F9<br>
+        case 2 result = $a4<br>
+        case 3 result = $b0 <br>
+        case 4 result = $99 <br>
+        case 5 result = $92<br>
+        case 6 result = $82<br>
+        case 7 result = $f8<br>
+        case 8 result = $80<br>
+        case 9 result = $90<br>
+    end select<br>
+end sub<br>
+<br>
+main:<br>
+    x=0<br>
+    trisc=10000001<br>
+    trisb=0<br>
+    trisa=0<br>
+    portc=0<br>
+    portb=mask(x)<br>
+    porta=0<br>
+
+
+
+    if portc.0 = 1 then
+        goto loop1
+ else if portc=10000001 then
+    goto loop3
+       end if
+
+   if portc.7 = 1 then
+        goto loop2
+
+  end if
+    goto main
+
+
+
+
+
+
+loop1:
+ x=0
+ do
+
+portb=mask(x)
+delay_ms(500)
+x=x+1
+if portc.0 = 0 then
+        goto main
+        end if
+         if portc=%10000001 then
+    goto loop3
+       end if
+loop until x=6
+if x=6 then
+goto run1
+end if
+
+
+loop2:
+ x=0
+ do
+  portb=mask(x)
+
+delay_ms(500)
+x=x+1
+if portc.7 = 0 then
+        goto main
+        end if
+         if portc=%10000001 then
+    goto loop3
+       end if
+loop until x=6
+if x=6 then
+goto run2
+end if
+
+
+
+loop3:
+ x=0
+ do
+portb=mask(x)
+delay_ms(500)
+x=x+1
+if portc.0 = 0 then
+        goto loop2
+        end if
+if portc.7 = 0 then
+        goto loop1
+        end if
+loop until x=10
+if x=10 then
+goto run3
+end if
+
+
+
+    run1:
+    porta=%000001
+    delay_ms(0)
+   if portc.0 = 0 then
+        goto main
+        end if
+       if portc=%10000001 then
+    goto loop3
+       end if
+    goto run1
+
+    run2:
+    porta=%100000
+    delay_ms(0)
+     if portc.7 = 0 then
+        goto main
+        end if
+        if portc=%10000001 then
+    goto loop3
+       end if
+    goto run2
+
+
+    run3:
+    porta=%100001
+    delay_ms(0)
+     if portc.7 = 0 then
+       porta=%000001
+        goto loop1
+        end if
+      if portc.0 = 0 then
+      porta=%100000
+goto loop2
+
+
+       end if
+    goto run3
+    
+
+   end if
+end.
 							</p>
 							</div>
 					</section>
