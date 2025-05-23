@@ -1,346 +1,255 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		
-		<title>Home</title>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="icon" type="img/gif" sizes="16x16" href="/images/rb.gif">
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="javashet/css/main.css" />
-		<noscript><link rel="stylesheet" href="javashet/css/noscript.css" /></noscript>
-	</head>
-	
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>City Messages</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      padding: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-		<!-- Sidebar -->
-		<section id="sidebar">
-				
-			<div class="inner1">
-				<a href="index.html" class="mtitle">RB      </a>
-				<nav>
-					<ul id="homies">
-					
-						<li><a href="#intro">Home</a></li>
-						<li><a href="#one">Projects</a></li>
-						<li><a href="#two">skills</a></li>
-						<li><a href="#three">Subscribe</a></li>
-						<li><a href="#four">About</a></li>
-					</ul>
-				</nav>
-			</div>
-		</section>
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
 
+    button.generate-btn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
 
-			<section id="sidebar">
-				
-				<div class="inner">
-					<a href="index.html" class="mtitle">RB      </a>
-					<nav>
-						<ul>
-							
-							<li><a href="#intro">Home</a></li>
-							<li><a href="#one">Projects</a></li>
-							<li><a href="#two">skills</a></li>
-							<li><a href="#three">Subscribe</a></li>
-							<li><a href="#four">About</a></li>
-						</ul>
-					</nav>
-				</div>
-			</section>
+    .output {
+      background-color: #fff;
+      padding: 12px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      max-width: 100%;
+    }
 
+    .city-title {
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 18px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
 
-		
+    .line-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 8px;
+      border: 1px solid #ddd;
+      padding: 6px 8px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
 
-		
+    .line-text {
+      flex: 1;
+      word-break: break-word;
+    }
 
-		
-			<div id="wrapper">
+    .copy-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-right: 10px;
+      white-space: nowrap;
+    }
 
-				<!-- Intro -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
-						<div class="inner">
-							<h1>HI! I'M <div class="container">
-								<p class="glitch">
-								  <span aria-hidden="true">ROBYN</span>
-								  ROBYN
-								  <span aria-hidden="true">ROBYN</span>
-								</p>
-							  </div></h1>
-							<p>A 3rd year student from <a href="https://stclareonline.com/" target="_blank" class="scc">St. Clare College </a>striving <br>
-								to become a Web Developer.</p>
-							<ul class="actions">
-								<li><a href="#one" class="button scrolly">Continue</a></li>
-							</ul>
-						</div>
-					</section>
-			
-				<!--PROJECTSSSSSSSSSSSSSSSSSSSSSSSSS -->
-					<section id="one" class="wrapper style2 spotlights">
-						<section>
-							<a href="page1.html" class="image"><img src="images/P10.png" alt="" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Project 10</h2>
-									<p> When the switch is pressed, pic16f84a microcontroller will count 0-9 using a 7 segment display.</p>
-									<ul class="actions">
-										<li><a href="page1.html" class="button">FREE</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="page2.html" class="image"><img src="images/P11.png" alt="" data-position="top center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>PROJECT 11</h2>
-									<p>The first button resets the count to 0, the second button controls the stop and go of the count of 7 segment display.</p>
-									<ul class="actions">
-										<li><a href="page2.html" class="button">FREE</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="page3.html" class="image"><img src="images/2PE.png" alt="" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>2ND PRELIM EXAM</h2>
-									<p>All LEDs will blink when the top button is pressed, and will run from left to right one by one when lower button is pressed, will stay off when neither is pressed.</p>
-									<ul class="actions">
-										<li><a href="page3.html" class="button">FREE</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="page4.html" class="image"><img src="images/QUIZ.png" alt="" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>QUIZ</h2>
-									<p>top motor will spin when the top switch is pressed, same rules applied to the lower switch and motor. both will be at rest when no switch is pressed</p>
-									<ul class="actions">
-										<li><a href="page4.html" class="button">FREE</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="page5.html" class="image"><img src="images/MD.png" alt="" data-position="25% 25%" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>MIDTERM EXAM</h2>
-									<p>When the top switch is pressed, the top motor will spin and the upper green LED will turn on, When the lower switch is pressed, the lower motor will spin and the lower green LED will turn on, But if not, The motor will be at rest and the red LED will turn on</p>
-									<ul class="actions">
-										<li><a href="page5.html" class="button">FREE</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="page1.html" class="image"><img src="images/q2.png" alt="" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Quiz 2</h2>
-									<p> a. 2 motors 2 switch to control each motor<br>
-                                                                            b. switch 1 is pressed, 7 segment counts to 5 to start motor 1 <br>
-                                                                            c. switch 2 is pressed, 7 segment counts to 5 to start motor 2 <br>
-                                                                            d. if two switches is on, 7 segment counts to 5 to start motor 1
-                                                                             </p>
-									<ul class="actions">
-										<li><a href="page1.html" class="button">FREE</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#three" class="image"><img src="images/FUF.png" alt="" data-position="25% 25%" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Fill Up Form</h2>
-									<p>A registration form that is functionally similar to <a href="https://survey-form.freecodecamp.rocks.">FreeCode Camp Survey Form</a></p>
-									<ul class="actions">
-										<li><a href="#three" class="button">&#x20B1;299.99</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-					</section>
+    .copy-btn:hover {
+      background-color: #218838;
+    }
 
-				<!-- skillllz -->
-				
-					<section id="two" class="wrapper style3 fade-up">
-						<div class="inner">
-							<h2>Skills </h2>
+    .message-container {
+      transition: max-height 0.3s ease;
+      overflow: hidden;
+      max-height: 1000px;
+    }
 
-						<div class="container1">
-							<div class="col">
-							  <h2 class="titulo">Primary</h2>
-							  <ul class="skill">
-								<li><span class="blueline html"></span><em>HTML</em></li>
-								<li><span class="blueline css"></span><em>CSS</em></li>
-								<li><span class="blueline php"></span><em>Javascript</em></li>
-								<li><span class="blueline javascript"></span><em>C#</em></li> 
-								<li><span class="blueline jquery"></span><em>.NET</em></li>
-							  </ul>
-							</div>
-							  <div class="col">
-							  <h2 class="titulo">Secondary</h2>
-							  <ul class="skill">
-								<li><span class="greenline wordpress"></span><em>Excel</em></li>
-								<li><span class="greenline prestashop"></span><em>Photoshop</em></li>
-								<li><span class="greenline joomla"></span><em> C#  </em></li>
-								<li><span class="greenline blogger"></span><em>Animation</em></li>
-								<li><span class="greenline tridion"></span><em>Premiere</em></li>
-							  </ul>
-							</div>
-							  <div class="col">
-							  <h2 class="titulo">Systems</h2>
-							  <ul class="skill">
-								<li><span class="redline dreamweaver"></span><em>Windows</em></li>
-								<li><span class="redline illustrator"></span><em>Linux</em></li>
-								<li><span class="redline photoshop"></span><em>Mac OS</em></li>
-								<li><span class="redline premiere"></span><em>Android</em></li>
-								<li><span class="redline flash"></span><em>IOS</em></li>
-							  </ul>
-							</div>
-						  </div>
-						
-	
-							
+    .message-container.collapsed {
+      max-height: 0;
+      padding: 0;
+      margin: 0;
+    }
 
+    /* Dark Mode */
+    .dark-mode {
+      background-color: #121212;
+      color: #f1f1f1;
+    }
 
-						
-							<ul class="actions">
-								<li><a href="#four" class="button" onclick="redirectAndRefresh()">Learn more</a></li>
-							</ul>
-						
-					
+    .dark-mode textarea {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+      border-color: #555;
+    }
 
-				<!-- Three -->
-					<section id="three" class="wrapper style1 fade-up">
-						<div class="inner">
-							<h2>Subscribe</h2>
-							<p>With only &#x20B1;299.99 you can access all future assignments with notes and tips and tricks in all your subjects.<br>
-							Daily updates on Assignments and Activities<br>
-							Weekly Group Study Via Google Meet<br>
-						</p>
-							<div class="split style1">
-								<section>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="name">Name</label>
-												<input type="text" name="name" id="name" />
-											</div>
-											<div class="field half">
-												<label for="number"required>Number</label>
-												<input type="text" name="email" id="email" />
-											</div>
-											<div class="field">
-												<label for="Number">Address</label>
-												<textarea name="message" id="message" rows="1" ></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><a href="page6.html" class="button submit">Proceed</a></li>
-										</ul>
-									</form>
-								</section>
-								<section>
-									<ul class="contact">
-										<li>
-											<h3>Address</h3>
-											<span>Blk 29 Lot 19 Emerald St. GoodHarvest Park Subdivision <br />
-												1400 Caloocan City | Philippines<br />
-											</span>
-										</li>
-										<li>
-											<h3>Email</h3>
-											<a href="#">Robynbntz@gmail.com</a>
-										</li>
-										<li>
-											<h3>Phone</h3>
-											<span>(+63) 915-879-5755</span>
-										</li>
-										<li>
-											<h3>Social</h3>
-											
+    .dark-mode .output {
+      background-color: #1e1e1e;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    }
 
-												<ul class="social-media-list">
-													<li>
-														<a href="https://www.facebook.com/BynNitez/" target="_blank">
-															<img src="images/facebook.png" alt="Facebook">
-														</a>
-													</li>
-													<li>
-														<a href="https://github.com/RobynBenitez">
-															<img src="images/Github.png" alt="GitHub">
-														</a>
-													</li>
-													<li>
-														<a href="https://www.freecodecamp.org/RobynBenitez">
-															<img src="images/freecode.png" alt="LinkedIn">
-														</a>
-													</li>
-													<li>
-														<a href="https://replit.com/@BENITEZROBYNCS3">
-															<img src="images/replit.png" alt="LinkedIn">
-														</a>
-													</li>
-												
-											</ul>
-										</li>
-									</ul>
-								</section>
-							</div>
-						</div>
-					</section>
-					<section id="four" class="wrapper style3 fade-up">
-						<img src="images/pp.jpg" class="pp" >
-							
-						<div class="inner">
-							<h2>About </h2>
+    .dark-mode .line-container {
+      border-color: #444;
+    }
 
-							<p class="abt">Robyn grew up not knowing his real passion,
-								 young Robyn toyed with the idea of becoming a lawyer.  He admired his mother's dedication to justice and her ability to argue her point, but 
-								before he delved into the world of law, he realized that the intricacies of legal codes and lengthy documents were not his cup of tea.
+    .dark-mode .copy-btn {
+      background-color: #4caf50;
+    }
 
-								However, he did have a small but growing passion for engineering. The way machines and structures worked, the tangible aspect of creating something from scratch 
-								fascinated him. But, as fate would have it, he couldn't escape the fact that engineering is quite expensive and
-								often required dealing with complex mathematical equations. This presented a frustrating hurdle for him, as numbers seemed like an insurmountable obstacle.
-								
-								Robyn's journey took an unexpected turn as he prioritized the desire to complete his education swiftly and start earning money. He didn't have a particular affinity
-								 for computers or any strong passion for a specific career. His primary goal was to finish school as soon as possible and enter the workforce. In this pursuit
-								  of practicality, he found that computer science offered a fast track to a well-paying job, even though he didn't have a deep-rooted interest in the field. 
-								  This decision allowed him to meet wonderful people and secure his financial future.
-								<br>  
-							</p>
+    .dark-mode .copy-btn:hover {
+      background-color: #388e3c;
+    }
 
-							<ul class="actions">
-								<li><a href="#two" class="button"  onclick="redirectAndRefresh()" >Skills</a></li>
-							</ul>
-	
-			</div>
+    .dark-mode .generate-btn {
+      background-color: #555;
+    }
 
-		<!-- Footer -->
-			<footer id="footer" class="wrapper style1-alt">
-				<div class="inner">
-					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="https://replit.com/@BENITEZROBYNCS3">Raw||Bean</a></li>
-					</ul>
-				</div>
-			</footer>
+    .dark-mode .city-title {
+      color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
 
-		
-			<script src="javashet/js/jquery.min.js"></script>
-			<script src="javashet/js/jquery.scrollex.min.js"></script>
-			<script src="javashet/js/jquery.scrolly.min.js"></script>
-			<script src="javashet/js/browser.min.js"></script>
-			<script src="javashet/js/breakpoints.min.js"></script>
-			<script src="javashet/js/util.js"></script>
-			<script src="javashet/js/main.js"></script>
+  <h2>Emma loves Robyn</h2>
 
-	</body>
+  <!-- Dark Mode Toggle -->
+  <div style="margin-bottom: 15px; text-align: right;">
+    <button id="toggleDarkMode" class="generate-btn" style="background-color: #333;">🌙 Dark Mode</button>
+  </div>
 
+  <!-- Input Textarea -->
+  <textarea id="inputText" placeholder="Paste city message blocks here..." autofocus></textarea>
+  <br />
+  <button class="generate-btn" onclick="generateOutput()">Generate</button>
+
+  <div id="outputSections"></div>
+
+  <script>
+    function generateOutput() {
+      const input = document.getElementById("inputText").value.trim();
+      const output = document.getElementById("outputSections");
+      output.innerHTML = "";
+
+      let currentCity = null;
+      let messages = [];
+
+      function renderCityBlock(city, messages) {
+        const sectionDiv = document.createElement("div");
+        sectionDiv.className = "output";
+
+        const cityTitle = document.createElement("div");
+        cityTitle.className = "city-title";
+        cityTitle.textContent = city.toUpperCase() + " ▼";
+
+        const messageContainer = document.createElement("div");
+        messageContainer.className = "message-container";
+
+        messages.slice(0, 11).forEach((line, i) => {
+          const lineDiv = document.createElement("div");
+          lineDiv.className = "line-container";
+
+          const copyBtn = document.createElement("button");
+          copyBtn.className = "copy-btn";
+          copyBtn.textContent = `Copy ${i + 1}`;
+          copyBtn.onclick = () => {
+            navigator.clipboard.writeText(line);
+            copyBtn.textContent = "Copied!";
+            setTimeout(() => copyBtn.textContent = `Copy ${i + 1}`, 1000);
+          };
+
+          const textSpan = document.createElement("span");
+          textSpan.className = "line-text";
+          textSpan.textContent = line;
+
+          lineDiv.appendChild(copyBtn);
+          lineDiv.appendChild(textSpan);
+          messageContainer.appendChild(lineDiv);
+        });
+
+        cityTitle.onclick = () => {
+          const collapsed = messageContainer.classList.toggle("collapsed");
+          cityTitle.textContent = city.toUpperCase() + (collapsed ? " ▼" : " ▲");
+        };
+
+        sectionDiv.appendChild(cityTitle);
+        sectionDiv.appendChild(messageContainer);
+        output.appendChild(sectionDiv);
+      }
+
+      const lines = input.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+      for (const line of lines) {
+        if (line.endsWith(":")) {
+          if (currentCity && messages.length > 0) {
+            renderCityBlock(currentCity, messages);
+          }
+          currentCity = line.replace(":", "").trim();
+          messages = [];
+        } else if (currentCity) {
+          messages.push(line);
+        }
+      }
+
+      if (currentCity && messages.length > 0) {
+        renderCityBlock(currentCity, messages);
+      }
+
+      // Auto-collapse for mobile
+      if (window.innerWidth <= 768) {
+        document.querySelectorAll(".message-container").forEach(mc => mc.classList.add("collapsed"));
+        document.querySelectorAll(".city-title").forEach(ct => {
+          const cityName = ct.textContent.replace(" ▲", "").replace(" ▼", "");
+          ct.textContent = cityName + " ▼";
+        });
+      }
+    }
+
+    // Dark mode toggle
+    const toggleBtn = document.getElementById("toggleDarkMode");
+    const body = document.body;
+
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+      const dark = body.classList.contains("dark-mode");
+      toggleBtn.textContent = dark ? "☀️ Light Mode" : "🌙 Dark Mode";
+      localStorage.setItem("darkMode", dark);
+    });
+
+    if (localStorage.getItem("darkMode") === "true") {
+      body.classList.add("dark-mode");
+      toggleBtn.textContent = "☀️ Light Mode";
+    }
+
+    // Ctrl+Enter to generate
+    document.getElementById("inputText").addEventListener("keydown", function (e) {
+      if (e.ctrlKey && e.key === "Enter") {
+        generateOutput();
+      }
+    });
+  </script>
+</body>
 </html>
