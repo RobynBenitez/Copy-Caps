@@ -164,12 +164,13 @@
 
         const cityTitle = document.createElement("div");
         cityTitle.className = "city-title";
-        cityTitle.textContent = city.toUpperCase() + " ▼";
+        cityTitle.textContent = `${city.toUpperCase()} (${messages.length}) ▼`;
+        cityTitle.tabIndex = 0;
 
         const messageContainer = document.createElement("div");
         messageContainer.className = "message-container";
 
-        messages.slice(0, 11).forEach((line, i) => {
+        messages.forEach((line, i) => {
           const lineDiv = document.createElement("div");
           lineDiv.className = "line-container";
 
@@ -193,8 +194,12 @@
 
         cityTitle.onclick = () => {
           const collapsed = messageContainer.classList.toggle("collapsed");
-          cityTitle.textContent = city.toUpperCase() + (collapsed ? " ▼" : " ▲");
+          cityTitle.textContent = `${city.toUpperCase()} (${messages.length}) ${collapsed ? "▼" : "▲"}`;
         };
+
+        cityTitle.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") cityTitle.click();
+        });
 
         sectionDiv.appendChild(cityTitle);
         sectionDiv.appendChild(messageContainer);
@@ -222,8 +227,8 @@
       if (window.innerWidth <= 768) {
         document.querySelectorAll(".message-container").forEach(mc => mc.classList.add("collapsed"));
         document.querySelectorAll(".city-title").forEach(ct => {
-          const cityName = ct.textContent.replace(" ▲", "").replace(" ▼", "");
-          ct.textContent = cityName + " ▼";
+          const text = ct.textContent.replace(" ▲", "").replace(" ▼", "");
+          ct.textContent = text + " ▼";
         });
       }
     }
