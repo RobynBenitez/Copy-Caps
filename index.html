@@ -29,7 +29,8 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      margin-left: 5px;
     }
 
     .output {
@@ -53,7 +54,7 @@
 
     .line-container {
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
       margin-bottom: 8px;
       border: 1px solid #ddd;
@@ -65,6 +66,7 @@
     .line-text {
       flex: 1;
       word-break: break-word;
+      padding: 0 10px;
     }
 
     .copy-btn {
@@ -75,7 +77,6 @@
       border-radius: 4px;
       cursor: pointer;
       font-size: 12px;
-      margin-right: 10px;
       white-space: nowrap;
     }
 
@@ -93,6 +94,11 @@
       max-height: 0;
       padding: 0;
       margin: 0;
+    }
+
+    .controls {
+      text-align: right;
+      margin-bottom: 15px;
     }
 
     /* Dark Mode */
@@ -137,12 +143,11 @@
 
   <h2>Emma loves Robyn</h2>
 
-  <!-- Dark Mode Toggle -->
-  <div style="margin-bottom: 15px; text-align: right;">
+  <div class="controls">
     <button id="toggleDarkMode" class="generate-btn" style="background-color: #333;">🌙 Dark Mode</button>
+    <button id="toggleHandMode" class="generate-btn">🖐️ Left-Hand Mode</button>
   </div>
 
-  <!-- Input Textarea -->
   <textarea id="inputText" placeholder="Paste city message blocks here..." autofocus></textarea>
   <br />
   <button class="generate-btn" onclick="generateOutput()">Generate</button>
@@ -150,6 +155,8 @@
   <div id="outputSections"></div>
 
   <script>
+    let isLeftHanded = localStorage.getItem("leftHandMode") === "true";
+
     function generateOutput() {
       const input = document.getElementById("inputText").value.trim();
       const output = document.getElementById("outputSections");
@@ -187,8 +194,14 @@
           textSpan.className = "line-text";
           textSpan.textContent = line;
 
-          lineDiv.appendChild(copyBtn);
-          lineDiv.appendChild(textSpan);
+          if (isLeftHanded) {
+            lineDiv.appendChild(copyBtn);
+            lineDiv.appendChild(textSpan);
+          } else {
+            lineDiv.appendChild(textSpan);
+            lineDiv.appendChild(copyBtn);
+          }
+
           messageContainer.appendChild(lineDiv);
         });
 
@@ -223,33 +236,41 @@
         renderCityBlock(currentCity, messages);
       }
 
-      // Auto-collapse for mobile
+      // Collapse on mobile
       if (window.innerWidth <= 768) {
         document.querySelectorAll(".message-container").forEach(mc => mc.classList.add("collapsed"));
         document.querySelectorAll(".city-title").forEach(ct => {
-          const text = ct.textContent.replace(" ▲", "").replace(" ▼", "");
-          ct.textContent = text + " ▼";
+          const name = ct.textContent.replace(" ▲", "").replace(" ▼", "");
+          ct.textContent = name + " ▼";
         });
       }
     }
 
-    // Dark mode toggle
-    const toggleBtn = document.getElementById("toggleDarkMode");
+    // Dark Mode
+    const toggleDark = document.getElementById("toggleDarkMode");
     const body = document.body;
-
-    toggleBtn.addEventListener("click", () => {
-      body.classList.toggle("dark-mode");
-      const dark = body.classList.contains("dark-mode");
-      toggleBtn.textContent = dark ? "☀️ Light Mode" : "🌙 Dark Mode";
-      localStorage.setItem("darkMode", dark);
-    });
-
     if (localStorage.getItem("darkMode") === "true") {
       body.classList.add("dark-mode");
-      toggleBtn.textContent = "☀️ Light Mode";
+      toggleDark.textContent = "☀️ Light Mode";
     }
+    toggleDark.onclick = () => {
+      body.classList.toggle("dark-mode");
+      const dark = body.classList.contains("dark-mode");
+      toggleDark.textContent = dark ? "☀️ Light Mode" : "🌙 Dark Mode";
+      localStorage.setItem("darkMode", dark);
+    };
 
-    // Ctrl+Enter to generate
+    // Left/Right Hand Toggle
+    const toggleHand = document.getElementById("toggleHandMode");
+    toggleHand.textContent = isLeftHanded ? "👉 Right-Hand Mode" : "🖐️ Left-Hand Mode";
+    toggleHand.onclick = () => {
+      isLeftHanded = !isLeftHanded;
+      toggleHand.textContent = isLeftHanded ? "👉 Right-Hand Mode" : "🖐️ Left-Hand Mode";
+      localStorage.setItem("leftHandMode", isLeftHanded);
+      generateOutput(); // Regenerate with new layout
+    };
+
+    // Ctrl+Enter shortcut
     document.getElementById("inputText").addEventListener("keydown", function (e) {
       if (e.ctrlKey && e.key === "Enter") {
         generateOutput();
