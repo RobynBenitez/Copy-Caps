@@ -64,10 +64,13 @@
     }
 
     .line-text {
-      flex: 1;
-      word-break: break-word;
-      padding: 0 10px;
-    }
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+  height: 1.2em;
+}
 
     .copy-btn {
       background-color: #28a745;
@@ -78,10 +81,16 @@
       cursor: pointer;
       font-size: 12px;
       white-space: nowrap;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     .copy-btn:hover {
       background-color: #218838;
+    }
+
+    .copy-btn.pressed {
+      background-color: #ffc107 !important;
+      color: black;
     }
 
     .message-container {
@@ -137,6 +146,11 @@
     .dark-mode .city-title {
       color: #f1f1f1;
     }
+
+    .dark-mode .copy-btn.pressed {
+      background-color: #ffd54f !important;
+      color: black;
+    }
   </style>
 </head>
 <body>
@@ -152,10 +166,13 @@
   <br />
   <button class="generate-btn" onclick="generateOutput()">Generate</button>
 
+  <div id="tabCount" style="margin: 10px 0; font-weight: bold;">Open Tabs: 0 / 0</div>
+
   <div id="outputSections"></div>
 
   <script>
     let isLeftHanded = localStorage.getItem("leftHandMode") === "true";
+    let lastPressedBtn = null;
 
     function generateOutput() {
       const input = document.getElementById("inputText").value.trim();
@@ -184,10 +201,20 @@
           const copyBtn = document.createElement("button");
           copyBtn.className = "copy-btn";
           copyBtn.textContent = `Copy ${i + 1}`;
+          copyBtn.dataset.originalText = copyBtn.textContent;
+
           copyBtn.onclick = () => {
             navigator.clipboard.writeText(line);
+
+            // Reset last pressed button
+            if (lastPressedBtn && lastPressedBtn !== copyBtn) {
+              lastPressedBtn.classList.remove("pressed");
+              lastPressedBtn.textContent = lastPressedBtn.dataset.originalText;
+            }
+
             copyBtn.textContent = "Copied!";
-            setTimeout(() => copyBtn.textContent = `Copy ${i + 1}`, 1000);
+            copyBtn.classList.add("pressed");
+            lastPressedBtn = copyBtn;
           };
 
           const textSpan = document.createElement("span");
@@ -207,7 +234,8 @@
 
         cityTitle.onclick = () => {
           const collapsed = messageContainer.classList.toggle("collapsed");
-          cityTitle.textContent = `${city.toUpperCase()} (${messages.length}) ${collapsed ? "▼" : "▲"}`;
+          cityTitle.textContent = `${city.toUpperCase()} (${messages.length}) ${collapsed ? "▲" : "▼"}`;
+          updateTabCount();
         };
 
         cityTitle.addEventListener("keydown", (e) => {
@@ -244,6 +272,14 @@
           ct.textContent = name + " ▼";
         });
       }
+
+      updateTabCount();
+    }
+
+    function updateTabCount() {
+      const total = document.querySelectorAll(".message-container").length;
+      const open = document.querySelectorAll(".message-container:not(.collapsed)").length;
+      document.getElementById("tabCount").textContent = `Open Tabs: ${open} / ${total}`;
     }
 
     // Dark Mode
@@ -267,7 +303,7 @@
       isLeftHanded = !isLeftHanded;
       toggleHand.textContent = isLeftHanded ? "👉 Right-Hand Mode" : "🖐️ Left-Hand Mode";
       localStorage.setItem("leftHandMode", isLeftHanded);
-      generateOutput(); // Regenerate with new layout
+      generateOutput();
     };
 
     // Ctrl+Enter shortcut
