@@ -1,317 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>City Messages</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f1f1f1;
-      padding: 20px;
-      transition: background-color 0.3s, color 0.3s;
-    }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLICKABOLS</title>
 
-    textarea {
-      width: 100%;
-      height: 200px;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      resize: vertical;
-    }
+<style>
 
-    button.generate-btn {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-bottom: 10px;
-      margin-left: 5px;
-    }
-
-    .output {
-      background-color: #fff;
-      padding: 12px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-      max-width: 100%;
-    }
-
-    .city-title {
-      text-align: center;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 18px;
-      margin-bottom: 10px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .line-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      border: 1px solid #ddd;
-      padding: 6px 8px;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-
-    .line-text {
-  flex: 1;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  line-height: 1.2;
-  height: 1.2em;
+body{
+    font-family: Arial;
+    background:#111;
+    color:#eee;
+    display:flex;
+    justify-content:center;
+    padding:40px 15px;
 }
 
-    .copy-btn {
-      background-color: #28a745;
-      color: white;
-      border: none;
-      padding: 4px 8px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 12px;
-      white-space: nowrap;
-      transition: background-color 0.3s, color 0.3s;
-    }
+.container{
+    width:100%;
+    max-width:650px;
+    background:#1e1e1e;
+    padding:25px;
+    border-radius:28px;
+}
 
-    .copy-btn:hover {
-      background-color: #218838;
-    }
+h3{
+    margin-top:25px;
+}
 
-    .copy-btn.pressed {
-      background-color: #ffc107 !important;
-      color: black;
-    }
+textarea{
+    width:100%;
+    height:90px;
+    margin-top:8px;
+    padding:12px;
+    border-radius:18px;
+    border:none;
+    background:#2a2a2a;
+    color:white;
+    resize:none;
+}
 
-    .message-container {
-      transition: max-height 0.3s ease;
-      overflow: hidden;
-      max-height: 1000px;
-    }
+.output-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:15px;
+}
 
-    .message-container.collapsed {
-      max-height: 0;
-      padding: 0;
-      margin: 0;
-    }
+.output-btn{
+    padding:12px 16px;
+    margin:6px;
+    border:none;
+    border-radius:18px;
+    background:#333;
+    color:white;
+    cursor:pointer;
+    transition:0.2s;
+}
 
-    .controls {
-      text-align: right;
-      margin-bottom: 15px;
-    }
+.output-btn.active{
+    background:#7a1b1b;
+}
 
-    /* Dark Mode */
-    .dark-mode {
-      background-color: #121212;
-      color: #f1f1f1;
-    }
+.generate-btn{
+    width:100%;
+    padding:14px;
+    margin-top:12px;
+    border:none;
+    border-radius:18px;
+    background:#444;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+}
 
-    .dark-mode textarea {
-      background-color: #1e1e1e;
-      color: #f1f1f1;
-      border-color: #555;
-    }
-
-    .dark-mode .output {
-      background-color: #1e1e1e;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-    }
-
-    .dark-mode .line-container {
-      border-color: #444;
-    }
-
-    .dark-mode .copy-btn {
-      background-color: #4caf50;
-    }
-
-    .dark-mode .copy-btn:hover {
-      background-color: #388e3c;
-    }
-
-    .dark-mode .generate-btn {
-      background-color: #555;
-    }
-
-    .dark-mode .city-title {
-      color: #f1f1f1;
-    }
-
-    .dark-mode .copy-btn.pressed {
-      background-color: #ffd54f !important;
-      color: black;
-    }
-  </style>
+</style>
 </head>
+
 <body>
 
-  <h2>Copy app by boss robyn</h2>
+<div class="container">
 
-  <div class="controls">
-    <button id="toggleDarkMode" class="generate-btn" style="background-color: #333;">🌙 Dark Mode</button>
-    <button id="toggleHandMode" class="generate-btn">🖐️ Left-Hand Mode</button>
-  </div>
+<h2 style="text-align:center">CLICKA BY RB</h2>
 
-  <textarea id="inputText" placeholder="Paste city message blocks here..." autofocus></textarea>
-  <br />
-  <button class="generate-btn" onclick="generateOutput()">Generate</button>
+<h3>Picture</h3>
+<textarea id="pics"></textarea>
 
-  <div id="tabCount" style="margin: 10px 0; font-weight: bold;">Open Tabs: 0 / 0</div>
+<h3>Caption</h3>
+<textarea id="captions"></textarea>
 
-  <div id="outputSections"></div>
+<h3>Topic</h3>
+<textarea id="topics"></textarea>
 
-  <script>
-    let isLeftHanded = localStorage.getItem("leftHandMode") === "true";
-    let lastPressedBtn = null;
+<h3>Bio and Repost (TAB separated)</h3>
+<textarea id="repost"></textarea>
 
-    function generateOutput() {
-      const input = document.getElementById("inputText").value.trim();
-      const output = document.getElementById("outputSections");
-      output.innerHTML = "";
+<button class="generate-btn" onclick="generate()">Generate Buttons</button>
 
-      let currentCity = null;
-      let messages = [];
+<div id="output"></div>
 
-      function renderCityBlock(city, messages) {
-        const sectionDiv = document.createElement("div");
-        sectionDiv.className = "output";
+</div>
 
-        const cityTitle = document.createElement("div");
-        cityTitle.className = "city-title";
-        cityTitle.textContent = `${city.toUpperCase()} (${messages.length}) ▼`;
-        cityTitle.tabIndex = 0;
+<script>
 
-        const messageContainer = document.createElement("div");
-        messageContainer.className = "message-container";
+let activeButton = null;
 
-        messages.forEach((line, i) => {
-          const lineDiv = document.createElement("div");
-          lineDiv.className = "line-container";
+/* Clean lines */
+function cleanLines(text){
+    return text.split("\n")
+        .map(l=>l.trim())
+        .filter(l=>l && !l.includes(".txt"));
+}
 
-          const copyBtn = document.createElement("button");
-          copyBtn.className = "copy-btn";
-          copyBtn.textContent = `Copy ${i + 1}`;
-          copyBtn.dataset.originalText = copyBtn.textContent;
+/* Bio formatter */
+function formatBio(text){
+    if(!text) return "";
 
-          copyBtn.onclick = () => {
-            navigator.clipboard.writeText(line);
+    const match = text.match(/^(\S+)\s+(.*)$/);
 
-            // Reset last pressed button
-            if (lastPressedBtn && lastPressedBtn !== copyBtn) {
-              lastPressedBtn.classList.remove("pressed");
-              lastPressedBtn.textContent = lastPressedBtn.dataset.originalText;
-            }
+    if(!match) return text;
 
-            copyBtn.textContent = "Copied!";
-            copyBtn.classList.add("pressed");
-            lastPressedBtn = copyBtn;
-          };
+    return match[1] + "\n" + match[2];
+}
 
-          const textSpan = document.createElement("span");
-          textSpan.className = "line-text";
-          textSpan.textContent = line;
+/* Copy button creator */
+function createCopyButton(label, value){
 
-          if (isLeftHanded) {
-            lineDiv.appendChild(copyBtn);
-            lineDiv.appendChild(textSpan);
-          } else {
-            lineDiv.appendChild(textSpan);
-            lineDiv.appendChild(copyBtn);
-          }
+    const btn = document.createElement("button");
+    btn.className="output-btn";
+    btn.innerText=label;
 
-          messageContainer.appendChild(lineDiv);
-        });
+    btn.onclick = ()=>{
 
-        cityTitle.onclick = () => {
-          const collapsed = messageContainer.classList.toggle("collapsed");
-          cityTitle.textContent = `${city.toUpperCase()} (${messages.length}) ${collapsed ? "▲" : "▼"}`;
-          updateTabCount();
-        };
+        navigator.clipboard.writeText(value);
 
-        cityTitle.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") cityTitle.click();
-        });
-
-        sectionDiv.appendChild(cityTitle);
-        sectionDiv.appendChild(messageContainer);
-        output.appendChild(sectionDiv);
-      }
-
-      const lines = input.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
-      for (const line of lines) {
-        if (line.endsWith(":")) {
-          if (currentCity && messages.length > 0) {
-            renderCityBlock(currentCity, messages);
-          }
-          currentCity = line.replace(":", "").trim();
-          messages = [];
-        } else if (currentCity) {
-          messages.push(line);
+        if(activeButton){
+            activeButton.classList.remove("active");
         }
-      }
 
-      if (currentCity && messages.length > 0) {
-        renderCityBlock(currentCity, messages);
-      }
-
-      // Collapse on mobile
-      if (window.innerWidth <= 768) {
-        document.querySelectorAll(".message-container").forEach(mc => mc.classList.add("collapsed"));
-        document.querySelectorAll(".city-title").forEach(ct => {
-          const name = ct.textContent.replace(" ▲", "").replace(" ▼", "");
-          ct.textContent = name + " ▼";
-        });
-      }
-
-      updateTabCount();
-    }
-
-    function updateTabCount() {
-      const total = document.querySelectorAll(".message-container").length;
-      const open = document.querySelectorAll(".message-container:not(.collapsed)").length;
-      document.getElementById("tabCount").textContent = `Open Tabs: ${open} / ${total}`;
-    }
-
-    // Dark Mode
-    const toggleDark = document.getElementById("toggleDarkMode");
-    const body = document.body;
-    if (localStorage.getItem("darkMode") === "true") {
-      body.classList.add("dark-mode");
-      toggleDark.textContent = "☀️ Light Mode";
-    }
-    toggleDark.onclick = () => {
-      body.classList.toggle("dark-mode");
-      const dark = body.classList.contains("dark-mode");
-      toggleDark.textContent = dark ? "☀️ Light Mode" : "🌙 Dark Mode";
-      localStorage.setItem("darkMode", dark);
+        btn.classList.add("active");
+        activeButton = btn;
     };
 
-    // Left/Right Hand Toggle
-    const toggleHand = document.getElementById("toggleHandMode");
-    toggleHand.textContent = isLeftHanded ? "👉 Right-Hand Mode" : "🖐️ Left-Hand Mode";
-    toggleHand.onclick = () => {
-      isLeftHanded = !isLeftHanded;
-      toggleHand.textContent = isLeftHanded ? "👉 Right-Hand Mode" : "🖐️ Left-Hand Mode";
-      localStorage.setItem("leftHandMode", isLeftHanded);
-      generateOutput();
-    };
+    return btn;
+}
 
-    // Ctrl+Enter shortcut
-    document.getElementById("inputText").addEventListener("keydown", function (e) {
-      if (e.ctrlKey && e.key === "Enter") {
-        generateOutput();
-      }
-    });
-  </script>
+/* Generate output */
+function generate(){
+
+    const output = document.getElementById("output");
+    output.innerHTML="";
+
+    const pics = cleanLines(document.getElementById("pics").value);
+    const caps = cleanLines(document.getElementById("captions").value);
+    const tops = cleanLines(document.getElementById("topics").value);
+
+    /* Picture Buttons */
+    const picRow = document.createElement("div");
+    picRow.className="output-row";
+
+    for(let i=0;i<3;i++){
+        if(pics[i]){
+            picRow.appendChild(
+                createCopyButton("Pic"+(i+1), pics[i])
+            );
+        }
+    }
+
+    output.appendChild(picRow);
+
+    /* Caption Buttons */
+    const capRow = document.createElement("div");
+    capRow.className="output-row";
+
+    for(let i=0;i<3;i++){
+        if(caps[i]){
+            capRow.appendChild(
+                createCopyButton("Caption"+(i+1), caps[i])
+            );
+        }
+    }
+
+    output.appendChild(capRow);
+
+    /* Topic Buttons */
+    const topRow = document.createElement("div");
+    topRow.className="output-row";
+
+    for(let i=0;i<3;i++){
+        if(tops[i]){
+            topRow.appendChild(
+                createCopyButton("Topic"+(i+1), tops[i])
+            );
+        }
+    }
+
+    output.appendChild(topRow);
+
+    /* Repost Tool (TAB separated) */
+    const repostRow = document.createElement("div");
+    repostRow.className="output-row";
+
+    const raw = document.getElementById("repost").value.trim();
+
+    if(raw){
+
+        const parts = raw.split("\t");
+
+        const bioRaw = parts[0] || "";
+        const repostCaption = parts[1] || "";
+        const repostAcc = parts[2] || "";
+
+        repostRow.appendChild(
+            createCopyButton("Bio", formatBio(bioRaw))
+        );
+
+        repostRow.appendChild(
+            createCopyButton("Repost Caption", repostCaption)
+        );
+
+        repostRow.appendChild(
+            createCopyButton("Repost Account", repostAcc)
+        );
+    }
+
+    output.appendChild(repostRow);
+}
+
+</script>
+
 </body>
 </html>
