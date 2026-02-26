@@ -73,6 +73,28 @@ textarea{
     cursor:pointer;
 }
 
+.top-info{
+    margin-top:20px;
+    text-align:left;
+}
+
+.top-info h2{
+    margin:4px 0;
+}
+
+/* TITLE FONT */
+.title-main{
+    text-align:center;
+    font-family:"Montserrat","Segoe UI",sans-serif;
+    font-weight:900;
+    font-size:32px;
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.5),
+        1px 1px 0 #000,
+        2px 2px 0 #444,
+        4px 4px 10px rgba(0,0,0,0.6);
+}
+
 </style>
 </head>
 
@@ -80,10 +102,10 @@ textarea{
 
 <div class="container">
 
-<h2 style="text-align:center">CLICKA BY RB</h2>
+<h2 class="title-main">CLICKA BY RB</h2>
 
-<h3>Picture</h3>
-<textarea id="pics"></textarea>
+<h3>Bio and Repost (Paste FULL Airtable Row - TAB separated)</h3>
+<textarea id="repost"></textarea>
 
 <h3>Caption</h3>
 <textarea id="captions"></textarea>
@@ -91,10 +113,12 @@ textarea{
 <h3>Topic</h3>
 <textarea id="topics"></textarea>
 
-<h3>Bio and Repost (TAB separated)</h3>
-<textarea id="repost"></textarea>
+<h3>Picture</h3>
+<textarea id="pics"></textarea>
 
 <button class="generate-btn" onclick="generate()">Generate Buttons</button>
+
+<div id="topInfo" class="top-info"></div>
 
 <div id="output"></div>
 
@@ -104,25 +128,12 @@ textarea{
 
 let activeButton = null;
 
-/* Clean lines */
 function cleanLines(text){
     return text.split("\n")
         .map(l=>l.trim())
         .filter(l=>l && !l.includes(".txt"));
 }
 
-/* Bio formatter */
-function formatBio(text){
-    if(!text) return "";
-
-    const match = text.match(/^(\S+)\s+(.*)$/);
-
-    if(!match) return text;
-
-    return match[1] + "\n" + match[2];
-}
-
-/* Copy button creator */
 function createCopyButton(label, value){
 
     const btn = document.createElement("button");
@@ -144,17 +155,78 @@ function createCopyButton(label, value){
     return btn;
 }
 
-/* Generate output */
 function generate(){
 
     const output = document.getElementById("output");
+    const topInfo = document.getElementById("topInfo");
+
     output.innerHTML="";
+    topInfo.innerHTML="";
 
     const pics = cleanLines(document.getElementById("pics").value);
-    const caps = cleanLines(document.getElementById("captions").value);
-    const tops = cleanLines(document.getElementById("topics").value);
+    const topics = cleanLines(document.getElementById("topics").value);
 
-    /* Picture Buttons */
+    const raw = document.getElementById("repost").value.trim();
+
+    let username="", vpn="", location="", repostCaption="", repostAcc="";
+    const password = "Ascension2025!";
+
+    if(raw){
+
+        const parts = raw.split("\t").map(p=>p.trim());
+
+        username = parts[0] || "";
+        vpn = parts[12] || "";
+        location = parts[15] || "";
+        repostCaption = parts[16] || "";
+        repostAcc = parts[17] || "";
+    }
+
+    if(username || vpn || location){
+        topInfo.innerHTML = `
+            <h2>Username: ${username}</h2>
+            <h2>VPN: ${vpn}</h2>
+            <h2>Loc: ${location}</h2>
+        `;
+    }
+
+    /* ===== Caption Smart Parser ===== */
+
+    let captionInput = document.getElementById("captions").value.trim();
+
+    let caps = [];
+
+    if(captionInput){
+
+        if(!captionInput.includes("{location}") && captionInput.includes("\n")){
+
+            caps = captionInput
+                .split("\n")
+                .map(l=>l.trim())
+                .filter(l=>l && !l.includes(".txt"));
+
+            if(caps.length > 3){
+                caps = caps.slice(0,3);
+            }
+        }
+
+        else if(captionInput.includes("{location}") || captionInput.includes("\t")){
+
+            caps = captionInput
+                .replace(/{location}/g, location || "")
+                .split("\t")
+                .map(p=>p.trim())
+                .filter(p=>p)
+                .slice(0,3);
+        }
+
+        else{
+            caps = [captionInput];
+        }
+    }
+
+    /* ROW 1 - Pictures */
+
     const picRow = document.createElement("div");
     picRow.className="output-row";
 
@@ -168,7 +240,25 @@ function generate(){
 
     output.appendChild(picRow);
 
-    /* Caption Buttons */
+    /* ROW 2 - Username + Password */
+
+    const userRow = document.createElement("div");
+    userRow.className="output-row";
+
+    if(username){
+        userRow.appendChild(
+            createCopyButton("Username", username)
+        );
+    }
+
+    userRow.appendChild(
+        createCopyButton("Password", password)
+    );
+
+    output.appendChild(userRow);
+
+    /* ROW 3 - Captions */
+
     const capRow = document.createElement("div");
     capRow.className="output-row";
 
@@ -182,44 +272,35 @@ function generate(){
 
     output.appendChild(capRow);
 
-    /* Topic Buttons */
+    /* ROW 4 - Topics */
+
     const topRow = document.createElement("div");
     topRow.className="output-row";
 
     for(let i=0;i<3;i++){
-        if(tops[i]){
+        if(topics[i]){
             topRow.appendChild(
-                createCopyButton("Topic"+(i+1), tops[i])
+                createCopyButton("Topic"+(i+1), topics[i])
             );
         }
     }
 
     output.appendChild(topRow);
 
-    /* Repost Tool (TAB separated) */
+    /* ROW 5 - Repost Account + Repost Caption */
+
     const repostRow = document.createElement("div");
     repostRow.className="output-row";
 
-    const raw = document.getElementById("repost").value.trim();
-
-    if(raw){
-
-        const parts = raw.split("\t");
-
-        const bioRaw = parts[0] || "";
-        const repostCaption = parts[1] || "";
-        const repostAcc = parts[2] || "";
-
-        repostRow.appendChild(
-            createCopyButton("Bio", formatBio(bioRaw))
-        );
-
-        repostRow.appendChild(
-            createCopyButton("Repost Caption", repostCaption)
-        );
-
+    if(repostAcc){
         repostRow.appendChild(
             createCopyButton("Repost Account", repostAcc)
+        );
+    }
+
+    if(repostCaption){
+        repostRow.appendChild(
+            createCopyButton("Repost Caption", repostCaption)
         );
     }
 
