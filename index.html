@@ -104,7 +104,7 @@ textarea{
 
 <h2 class="title-main">CLICKA BY RB</h2>
 
-<h3>BAGAAAAG</h3>
+<h3>ey sheesh</h3>
 <textarea id="repost"></textarea>
 
 <h3>Caption</h3>
@@ -176,10 +176,10 @@ function generate(){
         const parts = raw.split("\t").map(p=>p.trim());
 
         username = parts[0] || "";
-        vpn = parts[12] || "";
-        location = parts[15] || "";
-        repostCaption = parts[16] || "";
-        repostAcc = parts[17] || "";
+        vpn = parts[13] || "";
+        location = parts[16] || "";
+        repostCaption = parts[18] || "";
+        repostAcc = parts[19] || "";
     }
 
     if(username || vpn || location){
@@ -300,7 +300,7 @@ function generate(){
 
     if(repostCaption){
         repostRow.appendChild(
-            createCopyButton("Repost Caption", repostCaption)
+            createCopyButton("Repost Caption", repostCaption + "\n" +"@" + repostAcc + " ")
         );
     }
 
