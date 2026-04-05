@@ -176,10 +176,10 @@ function generate(){
         const parts = raw.split("\t").map(p=>p.trim());
 
         username = parts[0] || "";
-        vpn = parts[13] || "";
-        location = parts[16] || "";
+        vpn = parts[12] || "";
+        location = parts[15] || "";
         repostCaption = parts[18] || "";
-        repostAcc = parts[19] || "";
+        repostAcc = parts[16] || "";
     }
 
     if(username || vpn || location){
